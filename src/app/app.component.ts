@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {User} from './user';
+import {User} from './user/user';
 
 @Component({
   selector: 'app-root',
@@ -8,26 +8,15 @@ import {User} from './user';
 })
 export class AppComponent {
   title = 'app';
-  userList:Array<User> = [];
-  userName:string = "";
-  userAge:number = 0;
-
+  user:User;
   constructor(){
+    this.user = new User();
+    this.user.userId = "test";
+    this.user.userName = "테스트";
+    sessionStorage.setItem("user",JSON.stringify(this.user));
   }
   addUser():void{
-    var user:User = new User();
-    user.userName = this.userName;
-    user.userAge = this.userAge;
-    this.userList.push(user);
   }
   test() : void{
-    var user1:User = new User();
-    this.userList.push(user1);
-    user1.userName = "동동이";
-    user1.userAge = 3;
-    user1 = new User();
-    user1.userName = "동동이1";
-    user1.userAge = 5;
-    this.userList.push(user1);
   }
 }
