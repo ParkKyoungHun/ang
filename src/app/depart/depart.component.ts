@@ -15,7 +15,10 @@ export class DepartComponent implements OnInit {
   btnStr : string = "보기";
   diList : Array<Depart> = [];
   visible : boolean = false;
-  subTitle : string = this.title + "수정";
+  duVisible : boolean = false;
+  subTitle : string = this.title + "추가";
+  diNo : string="";
+  duDiNo : number = 0;
   
   constructor(private dis:DepartService) { 
     this.di = new Depart();
@@ -27,19 +30,38 @@ export class DepartComponent implements OnInit {
   }
 
   addDepart(di:Depart):void{
-    this.dis.addDepart(di).subscribe(
+    this.dis.addDepartPost(di).subscribe(
       datas => {
         let result = datas.json();
-        this.di = result.di;
+        if(result.succeed=="ok"){
+          alert("부서추가가 정상적으로 성공하였습니다.");
+          this.showDepartList();
+        }else{
+          alert("부서추가가 실패하였습니다.");
+        }
       }
     );
   }
   showDepartList():void{
-    this.diList = this.dis.getDepartList();
-    console.log(this.diList);
+    this.dis.getDepartList(this.diNo).subscribe(
+      datas=>{
+        console.log(datas.json());
+        this.diList = datas.json();
+      }
+    );
   }
-  deleteDi(idx){
-    this.diList.splice(idx,1);
+  deleteDi(di:Depart){
+    this.dis.deleteDepart(di).subscribe(
+      res=>{
+        var result = res.json();
+        if(result.error){
+          alert(result.error.msg);
+        }else{
+          alert("정상적으로 삭제 되었습니다.");
+          this.showDepartList();
+        }
+      }
+    );
   }
   changeShow():void{
     this.isShow = !this.isShow;
@@ -47,5 +69,12 @@ export class DepartComponent implements OnInit {
     if(this.isShow){
       this.btnStr = "안보기";
     }
+  }
+  chVisible(v:boolean):void{
+    this.duVisible =v;
+  }
+  openView(di:Depart):void{
+    this.duDiNo = di.diNo;
+    this.chVisible(true);
   }
 }

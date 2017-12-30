@@ -1,16 +1,14 @@
 <p>
   {{title}}
 </p>
-<div>
-    부서번호{{di.diNo}}<br>
-    부서이름{{di.diName}}<br>
-    부서설명{{di.diDesc}}<br>
-    부서인원{{di.diCnt}}<br>
-</div>
+<app-depart-update *ngIf="duVisible" [duDiNo]="duDiNo"
+(duVisible)="chVisible($event)"  (childeDi)="updateDepart($event)"
+></app-depart-update>
 <app-depart-insert *ngIf="visible" [title]="subTitle"
 (childeVisible)="toggleDepartInsert($event)" (childeDi)="addDepart($event)"></app-depart-insert>
-<button (click)="toggleDepartInsert(true)">부서추가</button>
-<button (click)="showDepartList()">부서리스트 보기</button>
+<button (click)="toggleDepartInsert(true)">부서추가</button><br>
+<input type="text" [(ngModel)]="diNo">
+<button (click)="showDepartList()">부서리스트 검색</button>
 <table *ngIf="diList.length!=0" border='1'>
   <tr>
     <th>부서번호</th>
@@ -20,10 +18,10 @@
     <th>삭제</th>
   </tr>
   <tr *ngFor="let di of diList; let idx = index">
-      <td>{{di.diNo}}</td>
+      <td (click)="openView(di)">{{di.diNo}}</td>
       <td>{{di.diName}}</td>
       <td>{{di.diDesc}}</td>
       <td>{{di.diCnt}}</td>
-      <td><button (click)="deleteDi(idx)">삭제</button></td>
+      <td><button (click)="deleteDi(di)">삭제</button></td>
   </tr>
 </table>
