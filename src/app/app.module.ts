@@ -14,6 +14,10 @@ import { NotFoundComponentComponent } from './not-found-component/not-found-comp
 import { FuncTestComponent } from './func-test/func-test.component';
 import { PromiseComponent } from './promise/promise.component';
 import { DepartUpdateComponent } from './depart-update/depart-update.component';
+//import { LifecycleTestComponent } from './lifecycle-test/lifecycle-test.component';
+import { ParentComponent,LifecycleTestComponent } from './parent/parent.component';
+import { NgContentComponent } from './ng-content/ng-content.component';
+import { UserDepartComponent } from './user-depart/user-depart.component';
 
 
 @NgModule({
@@ -27,7 +31,11 @@ import { DepartUpdateComponent } from './depart-update/depart-update.component';
     NotFoundComponentComponent,
     FuncTestComponent,
     PromiseComponent,
-    DepartUpdateComponent
+    DepartUpdateComponent,
+    LifecycleTestComponent,
+    ParentComponent,
+    NgContentComponent,
+    UserDepartComponent
   ],
   imports: [
     BrowserModule,
@@ -35,12 +43,13 @@ import { DepartUpdateComponent } from './depart-update/depart-update.component';
     HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      {path: 'user',component: UserComponent},
+      {path: 'userdepart',component: UserDepartComponent},
       {path: 'test',component: TestComponent},
       {path:'depart',component : DepartComponent},
       {path:'',component : WelcomeComponent},
       {path:'functest',component:FuncTestComponent},
-      {path:'promise',component:PromiseComponent}
+      {path:'promise',component:PromiseComponent},
+      {path:'parent',component:ParentComponent}
     ])
   ],
   providers: [],

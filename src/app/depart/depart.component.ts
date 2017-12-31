@@ -42,6 +42,12 @@ export class DepartComponent implements OnInit {
       }
     );
   }
+  duCase(duCase:string):void{
+    this.duVisible = false;
+    if(duCase=="reload"){
+      this.showDepartList();
+    }
+  }
   showDepartList():void{
     this.dis.getDepartList(this.diNo).subscribe(
       datas=>{

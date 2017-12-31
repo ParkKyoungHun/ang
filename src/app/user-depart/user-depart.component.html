@@ -1,0 +1,26 @@
+<h1>{{title}}</h1>
+<div>
+  <button (click)="searchUDList()">검색</button>
+</div>
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th>유저번호</th>
+      <th>유저이름</th>
+      <th>유저아이디</th>
+      <th>부서번호</th>
+      <th>부서명</th>
+    </tr>
+    <tr *ngFor="let ud of udList">
+      <td>{{ud.userNo}}</td>
+      <td><input type="text" [(ngModel)]="ud.userName"></td>
+      <td><input type="text" [(ngModel)]="ud.userId"></td>
+      <td>{{ud.diNo}}</td>
+      <td>
+        <select [(ngModel)]="ud.diNo">
+          <option *ngFor="let di of diList" [value]="di.diNo">{{di.diName}}</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>

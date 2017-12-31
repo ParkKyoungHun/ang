@@ -2,7 +2,7 @@
   {{title}}
 </p>
 <app-depart-update *ngIf="duVisible" [duDiNo]="duDiNo"
-(duVisible)="chVisible($event)"  (childeDi)="updateDepart($event)"
+(duCase)="duCase($event)"  (childeDi)="updateDepart($event)"
 ></app-depart-update>
 <app-depart-insert *ngIf="visible" [title]="subTitle"
 (childeVisible)="toggleDepartInsert($event)" (childeDi)="addDepart($event)"></app-depart-insert>

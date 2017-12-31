@@ -7,7 +7,6 @@ export class User {
     complete: boolean;
     token:string;
     constructor(values: Object = {}) {
-      console.log('날 실행했구나 니가!!');
       Object.assign(this, values);
     }
 }
