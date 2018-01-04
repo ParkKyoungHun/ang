@@ -16,7 +16,7 @@ export class PromiseComponent implements OnInit {
 
   setLog(text:string){
     let log:ProLog = new ProLog();
-    log.num = this.proLogList.length;
+    log.num = this.proLogList.length+1;
     log.text = text;
     this.proLogList.push(log);
   }
@@ -36,7 +36,6 @@ export class PromiseComponent implements OnInit {
     let test1 = ():void=>{
       this.setTime('첫번째',1500);
     }
-
     let test2 = ():void=>{
       this.setTime('두번째',1000);
     }
@@ -79,6 +78,7 @@ export class PromiseComponent implements OnInit {
     let test1 = this.getPromise.bind(this,'첫번째',1500);
     let test2 = this.getPromise.bind(this,'두번째',500);
     let test3 = this.getPromise.bind(this,'세번째',1000,'에러났음');
+    let test4 = this.getPromise.bind(this,'네번째',1000,);
     test1().
     then(test3).
     then(test2)
@@ -87,6 +87,7 @@ export class PromiseComponent implements OnInit {
         this.setLog(msg);
       }
     ).
+    then(test4).
     then(()=>{
       this.setLog("모두 완료일껄요~");
     })
