@@ -3,8 +3,7 @@
         <div class='container-fluid'>
             <a class='navbar-brand'>{{pageTitle}}</a>
             <ul class='nav navbar-nav'>
-                <li><a [routerLink]="['/']">Home</a></li>
-                <li *ngFor="let rl of rlList"><a [routerLink]="[rl.url]">{{rl.text}}</a></li>
+                <li *ngFor="let rl of rlList"><a [routerLink]="[rl.mUrl]">{{rl.mText}}</a></li>
             </ul>
         </div>
     </nav>

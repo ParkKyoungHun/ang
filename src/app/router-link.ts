@@ -1,6 +1,6 @@
 export class RouterLink {
-    url:string
-    text:string
+    mUrl:string
+    mText:string
     constructor(values: Object = {}) {
         Object.assign(this, values);
     }

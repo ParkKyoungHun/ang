@@ -8,6 +8,7 @@ import {Test} from './test';
 export class TestComponent implements OnInit {
   tt:Test;
   title:string = "테스트 컴포넌트입니다.";
+  dbList:Array<any> = [];
   constructor() { 
     this.tt = new Test();
     this.tt.name = "홍길동";
@@ -18,6 +19,6 @@ export class TestComponent implements OnInit {
   ngOnInit() {
   }
   changeTitle():void{
-    this.title="바뀐 테스트컴포넌트입니다.";
+    
   }
 }

@@ -3,7 +3,10 @@
   {{tt.name}}
 </p>
 <div>
-  이름 : <input type="text" [(ngModel)]="tt.name"><br>
-  타이틀 : <input type="text" [(ngModel)]="tt.title"><br>
-<button (click)="changeTitle()">타이틀 변경</button>
+  <ul>
+    <li *ngFor="let dp of dpList">
+        {{dp.no}} : {{dp.name}}
+    </li>
+  </ul>
+<button (click)="changeTitle()">dblist불러오기</button>
 </div>
