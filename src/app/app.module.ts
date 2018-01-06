@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {enableProdMode} from '@angular/core';
+import {CommonServiceService} from './common/common-service.service';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms'; 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -52,7 +53,7 @@ import { UserDepartComponent } from './user-depart/user-depart.component';
       {path:'parent',component:ParentComponent}
     ])
   ],
-  providers: [],
+  providers: [CommonServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
