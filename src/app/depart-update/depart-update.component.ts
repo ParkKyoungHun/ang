@@ -18,12 +18,11 @@ export class DepartUpdateComponent implements OnInit {
     this.dus.getDepart(this.duDiNo).subscribe(
       res=>{
         console.log(res.json());
-        this.di = res.json()[0];
+        this.di = res.json().list[0];
       }
     )
   }
   close():void{
-    alert(this.duDiNo);
     this.duCase.emit("close");
   }
   updateDepart():void{

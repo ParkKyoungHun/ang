@@ -15,7 +15,6 @@ export class DepartUpdateService {
   }
   getDepart(diNo:number):Observable<any>{
     let url:string = "api/departs/" + diNo;
-    alert(url);
     return this._http.get(this.url + url);
   }
 }
